@@ -222,11 +222,11 @@ function Home() {
         />
         <ProductGridSection
           title="💻 Electronics Zone"
-          endpoint="/api/products/category/electronics"
+          endpoint="/api/products/category/Electronics"
         />
         <ProductGridSection
           title="👕 Fashion Picks"
-          endpoint="/api/products/category/fashion"
+          endpoint="/api/products/category/Fashion"
         />
 
         <div className="row g-4 mt-5">
