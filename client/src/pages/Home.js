@@ -15,10 +15,7 @@ function Home() {
       try {
         setLoading(true);
         setError(null);
-        console.log(
-          "Fetching deals from http://localhost:5000/api/products/deals"
-        );
-        const res = await axios.get("http://localhost:5000/api/products/deals");
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/deals`);
         console.log("API response:", res.data);
         setDeals(res.data);
         setLoading(false); // Fixed: Set loading to false after successful fetch
@@ -217,15 +214,15 @@ function Home() {
 
         <ProductGridSection
           title="🧠 Recommended for You"
-          endpoint="http://localhost:5000/api/products/random"
+          endpoint={`${process.env.REACT_APP_API_URL}/api/products/random`}
         />
         <ProductGridSection
           title="💻 Electronics Zone"
-          endpoint="http://localhost:5000/api/products/category/electronics"
+          endpoint={`${process.env.REACT_APP_API_URL}/api/products/category/electronics`}
         />
         <ProductGridSection
           title="👕 Fashion Picks"
-          endpoint="http://localhost:5000/api/products/category/fashion"
+          endpoint={`${process.env.REACT_APP_API_URL}/api/products/category/fashion`}
         />
 
         <div className="row g-4 mt-5">
