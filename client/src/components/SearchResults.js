@@ -15,7 +15,7 @@ function SearchResults() {
             setLoading(true);
             setError(null);
             axios
-                .get(`http://localhost:5000/api/products/search?q=${query}`)
+                .get(`${process.env.REACT_APP_API_URL}/api/products/search?q=${query}`)
                 .then((res) => {
                     setResults(res.data);
                     setLoading(false);

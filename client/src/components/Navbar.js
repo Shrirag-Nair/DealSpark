@@ -40,7 +40,7 @@ function Navbar() {
 
       // Fetch buyer offer count
       const buyerRes = await axios.get(
-        "http://localhost:5000/api/offers/buyer/count",
+        `${process.env.REACT_APP_API_URL}/api/offers/buyer/count`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -49,7 +49,7 @@ function Navbar() {
 
       // Fetch owner offer count
       const ownerRes = await axios.get(
-        "http://localhost:5000/api/offers/owner/count",
+        `${process.env.REACT_APP_API_URL}/api/offers/owner/count`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -65,7 +65,7 @@ function Navbar() {
       const token = localStorage.getItem("dealspark_token");
       if (!token) return;
       await axios.post(
-        "http://localhost:5000/api/offers/buyer/mark-seen",
+        `${process.env.REACT_APP_API_URL}/api/offers/buyer/mark-seen`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -82,7 +82,7 @@ function Navbar() {
       const token = localStorage.getItem("dealspark_token");
       if (!token) return;
       await axios.post(
-        "http://localhost:5000/api/offers/owner/mark-seen",
+        `${process.env.REACT_APP_API_URL}/api/offers/owner/mark-seen`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
