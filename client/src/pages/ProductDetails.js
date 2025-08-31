@@ -111,7 +111,6 @@ function ProductDetail() {
         }
       );
       alert("Product added to cart!");
-      window.location.href = "/profile";
     } catch (error) {
       console.error("Error adding to cart:", error);
       alert(error.response?.data?.message || "Failed to add to cart.");
