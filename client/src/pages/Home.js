@@ -15,7 +15,9 @@ function Home() {
       try {
         setLoading(true);
         setError(null);
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/deals`);
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/products/deals`
+        );
         console.log("API response:", res.data);
         setDeals(res.data);
         setLoading(false); // Fixed: Set loading to false after successful fetch
@@ -159,8 +161,12 @@ function Home() {
                     src={product.imageUrl}
                     className="card-img-top"
                     alt={product.name}
-                    style={{ height: "200px", objectFit: "cover",borderTopLeftRadius: "12px",
-                  borderTopRightRadius: "12px", }}
+                    style={{
+                      height: "200px",
+                      objectFit: "cover",
+                      borderTopLeftRadius: "12px",
+                      borderTopRightRadius: "12px",
+                    }}
                   />
                   {product.stock === 0 ? (
                     <span className="badge bg-danger position-absolute top-0 end-0 m-2">
@@ -177,9 +183,7 @@ function Home() {
                   )}
 
                   <div className="card-body d-flex flex-column justify-content-between">
-                    <h5 className="card-title">
-                      {product.name}
-                    </h5>
+                    <h5 className="card-title">{product.name}</h5>
                     <p
                       className="card-text text-muted mb-2"
                       style={{ fontSize: "0.9rem" }}
@@ -201,7 +205,7 @@ function Home() {
                     <Link
                       to={`/product/${product._id}`}
                       className="btn btn-outline-primary btn-sm w-100 mt-auto"
-                      style={{borderRadius: "6px"}}
+                      style={{ borderRadius: "6px" }}
                     >
                       View & Offer
                     </Link>
@@ -214,15 +218,15 @@ function Home() {
 
         <ProductGridSection
           title="🧠 Recommended for You"
-          endpoint={`${process.env.REACT_APP_API_URL}/api/products/random`}
+          endpoint="/api/products/random"
         />
         <ProductGridSection
           title="💻 Electronics Zone"
-          endpoint={`${process.env.REACT_APP_API_URL}/api/products/category/electronics`}
+          endpoint="/api/products/category/electronics"
         />
         <ProductGridSection
           title="👕 Fashion Picks"
-          endpoint={`${process.env.REACT_APP_API_URL}/api/products/category/fashion`}
+          endpoint="/api/products/category/fashion"
         />
 
         <div className="row g-4 mt-5">
