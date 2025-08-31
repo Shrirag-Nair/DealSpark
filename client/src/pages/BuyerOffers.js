@@ -29,7 +29,7 @@ function BuyerOffers() {
   const fetchOffers = async () => {
     try {
       const token = localStorage.getItem("dealspark_token");
-      const res = await axios.get("http://localhost:5000/api/offers/buyer", {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/offers/buyer`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOffers(res.data);
@@ -43,7 +43,7 @@ function BuyerOffers() {
       const token = localStorage.getItem("dealspark_token");
       if (!token) return;
       await axios.post(
-        "http://localhost:5000/api/offers/buyer/mark-seen",
+        `${process.env.REACT_APP_API_URL}/api/offers/buyer/mark-seen`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -60,7 +60,7 @@ function BuyerOffers() {
     try {
       const token = localStorage.getItem("dealspark_token");
       await axios.patch(
-        `http://localhost:5000/api/offers/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/offers/${id}`,
         {
           status,
           counterPrice: counterPrice ? Number(counterPrice) : undefined,
@@ -79,7 +79,7 @@ function BuyerOffers() {
   const removeOffer = async (id) => {
     try {
       const token = localStorage.getItem("dealspark_token");
-      await axios.delete(`http://localhost:5000/api/offers/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/offers/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOffers(offers.filter((o) => o._id !== id));
@@ -119,7 +119,7 @@ function BuyerOffers() {
 
       try {
         const { data } = await axios.post(
-          "http://localhost:5000/api/offers/create-payment-intent",
+          `${process.env.REACT_APP_API_URL}/api/offers/create-payment-intent`,
           { amount: finalPrice },
           {
             headers: {
@@ -155,7 +155,7 @@ function BuyerOffers() {
           deliveryDate.setDate(deliveryDate.getDate() + 5);
 
           await axios.post(
-            "http://localhost:5000/api/orders",
+            `${process.env.REACT_APP_API_URL}/api/orders`,
             {
               items: [{ product: selectedOffer.productId, quantity: 1, price: finalPrice  }],
               totalAmount: finalPrice,

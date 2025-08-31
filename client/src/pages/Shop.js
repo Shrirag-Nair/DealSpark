@@ -14,8 +14,8 @@ function Shop() {
       try {
         const res = await axios.get(
           category
-            ? `http://localhost:5000/api/products/shop?category=${category}`
-            : `http://localhost:5000/api/products/shop`
+            ? `${process.env.REACT_APP_API_URL}/api/products/shop?category=${category}`
+            : `${process.env.REACT_APP_API_URL}/api/products/shop`
         );
         setProducts(res.data);
       } catch (err) {

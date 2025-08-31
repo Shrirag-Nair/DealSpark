@@ -25,7 +25,7 @@ const PaymentForm = ({ total, onSuccess, onClose }) => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/offers/create-payment-intent",
+        `${process.env.REACT_APP_API_URL}/api/offers/create-payment-intent`,
         { amount: total},
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("dealspark_token")}` },
@@ -221,7 +221,7 @@ export default function Profile() {
 
   const handleRemoveFromCart = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/users/${storedUser.id}/cart/${productId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/${storedUser.id}/cart/${productId}`);
       setCart(cart.filter((item) => item.ProductId._id !== productId));
     } catch (err) {
       console.error("Error removing item:", err);
@@ -240,7 +240,7 @@ export default function Profile() {
   const handlePaymentSuccess = async(paymentIntent) => {
    try{
     await axios.post(
-      "http://localhost:5000/api/orders",
+      `${process.env.REACT_APP_API_URL}/api/orders`,
       {
          items: cart.map((item) => ({
           product: item.ProductId._id,

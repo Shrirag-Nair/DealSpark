@@ -32,7 +32,7 @@ function ProductDetail() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/products/${id}`)
       .then((res) => {
         setProduct(res.data);
         setActiveImage(res.data.image?.[0] || res.data.imageUrl);
@@ -53,7 +53,7 @@ function ProductDetail() {
   const fetchExistingOffer = async (token) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/offers/my-offer/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/offers/my-offer/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -98,7 +98,7 @@ function ProductDetail() {
 
     try {
       await axios.post(
-        `http://localhost:5000/api/users/cart/add`,
+        `${process.env.REACT_APP_API_URL}/api/users/cart/add`,
         {
           productId: product._id,
           qty: 1,
@@ -149,7 +149,7 @@ function ProductDetail() {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://localhost:5000/api/offers/create-payment-intent",
+          `${process.env.REACT_APP_API_URL}/api/offers/create-payment-intent`,
           {
             amount: product.dealPrice,
           },
@@ -183,7 +183,7 @@ function ProductDetail() {
           try {
             const user = JSON.parse(localStorage.getItem("dealspark_user"));
             await axios.post(
-              "http://localhost:5000/api/orders",
+              `${process.env.REACT_APP_API_URL}/api/orders`,
               {
                 items: [
                   {
@@ -385,7 +385,7 @@ function ProductDetail() {
 
                         axios
                           .post(
-                            "http://localhost:5000/api/offers",
+                            `${process.env.REACT_APP_API_URL}/api/offers`,
                             {
                               productId: product._id,
                               offeredPrice: Number(customPrice),

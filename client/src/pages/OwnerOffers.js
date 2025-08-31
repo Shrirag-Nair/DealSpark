@@ -16,7 +16,7 @@ function OwnerOffers() {
   const fetchOffers = async () => {
     try {
       const token = localStorage.getItem("dealspark_token");
-      const res = await axios.get("http://localhost:5000/api/offers/owner", {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/offers/owner`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOffers(res.data);
@@ -29,7 +29,7 @@ function OwnerOffers() {
     try {
       const token = localStorage.getItem("dealspark_token");
       if (!token) return;
-      await axios.post("http://localhost:5000/api/offers/owner/mark-seen", {}, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/offers/owner/mark-seen`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Trigger storage event to refresh Navbar counts
@@ -43,7 +43,7 @@ function OwnerOffers() {
     try {
       const token = localStorage.getItem("dealspark_token");
       await axios.patch(
-        `http://localhost:5000/api/offers/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/offers/${id}`,
         { status, counterPrice: counterPrice ? Number(counterPrice) : undefined },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -59,7 +59,7 @@ function OwnerOffers() {
   const removeOffer = async (id) => {
     try {
       const token = localStorage.getItem("dealspark_token");
-      await axios.delete(`http://localhost:5000/api/offers/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/offers/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOffers(offers.filter((o) => o._id !== id));
