@@ -5,15 +5,12 @@ import { Link } from "react-router-dom";
 function ProductGridSection({ title, endpoint }) {
   const [products, setProducts] = useState([]);
 
-useEffect(() => {
-  if (!endpoint) return;
-  
-  axios
-    .get(`${process.env.REACT_APP_API_URL}${endpoint}`)
-    .then((res) => setProducts(res.data))
-    .catch((err) => console.log("Error Loading Section:", err));
-}, [endpoint]);
-
+  useEffect(() => {
+    axios
+      .get(endpoint)
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.log("Error Loading Section:", err));
+  }, [endpoint]);
 
   return (
     <div className="container py-4">

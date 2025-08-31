@@ -214,15 +214,15 @@ function Home() {
 
         <ProductGridSection
           title="🧠 Recommended for You"
-          endpoint={`/api/products/random`}
+          endpoint={`${process.env.REACT_APP_API_URL}/api/products/random`}
         />
         <ProductGridSection
           title="💻 Electronics Zone"
-          endpoint={`/api/products/category/electronics`}
+          endpoint={`${process.env.REACT_APP_API_URL}/api/products/category/electronics`}
         />
         <ProductGridSection
           title="👕 Fashion Picks"
-          endpoint={`/api/products/category/fashion`}
+          endpoint={`${process.env.REACT_APP_API_URL}/api/products/category/fashion`}
         />
 
         <div className="row g-4 mt-5">
