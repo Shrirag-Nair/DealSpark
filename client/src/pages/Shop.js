@@ -43,13 +43,13 @@ function Shop() {
           </button>
           <button
             className="btn btn-sm btn-outline-primary mx-1"
-            onClick={() => setSearchParams({ category: "electronics" })}
+            onClick={() => setSearchParams({ category: "Electronics" })}
           >
             Electronics
           </button>
           <button
             className="btn btn-sm btn-outline-primary mx-1"
-            onClick={() => setSearchParams({ category: "fashion" })}
+            onClick={() => setSearchParams({ category: "Fashion" })}
           >
             Fashion
           </button>
